@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="recommendList.length">
     <div class="title">热销推荐</div>
     <ul>
       <!-- <router-link
@@ -23,22 +23,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    recommendList: Array
+  },
   data () {
     return {
-      recommendList: [
-        {
-          id: '1',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1504/47/4730a0c01664b63d.water.jpg_200x200_d7f52253.jpg',
-          title: '景点门票景点门票',
-          desc: '武汉极地海洋世界+海洋萌宠乐园（水母馆）成人票（需换实体票）'
-        },
-        {
-          id: '2',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1504/47/4730a0c01664b63d.water.jpg_200x200_d7f52253.jpg',
-          title: '武汉花博汇',
-          desc: '武汉极地海洋世界+海洋萌宠乐园（水母馆）成人票（需换实体票）'
-        }
-      ]
     }
   }
 }
@@ -46,7 +35,6 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .title
-    margin-top: .2rem
     line-height: .8rem
     background: #eee
     text-indent: .2rem

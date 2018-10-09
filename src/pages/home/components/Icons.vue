@@ -1,10 +1,10 @@
 <template>
   <div class="icons">
-    <swiper :options="swiperOption">
+    <swiper v-if="pages.length" :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
-            <img class="icon-img-content" :src="item.imgURL" alt="">
+            <img class="icon-img-content" :src="item.imgUrl" alt="">
           </div>
           <div class="icon-desc">{{item.desc}}</div>
         </div>
@@ -16,64 +16,21 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    iconList: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        autoplay: 0
-      },
-      iconList: [
-        {
-          id: '1',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票景点门票'
-        },
-        {
-          id: '2',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc: '武汉必游'
-        },
-        {
-          id: '3',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        },
-        {
-          id: '4',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc: '武汉必游'
-        },
-        {
-          id: '5',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        },
-        {
-          id: '6',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc: '武汉必游'
-        },
-        {
-          id: '7',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        },
-        {
-          id: '8',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc: '武汉必游'
-        },
-        {
-          id: '9',
-          imgURL: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        }
-      ]
+        autoplay: false
+      }
     }
   },
   computed: {
     pages () {
       const pages = []
+      console.log(this.iconList)
       this.iconList.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {

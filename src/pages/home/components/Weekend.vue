@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="title">热销推荐</div>
+  <div v-if="weekendList.length">
+    <div class="title">周末去哪儿</div>
     <ul>
       <!-- <router-link
         tag="li"
@@ -9,7 +9,7 @@
         :key="item.id"
         :to="'/detail/' + item.id"
       > -->
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of weekendList" :key="item.id">
         <div class="item-img-wrapper">
           <img class="item-img" :src="item.imgUrl" />
         </div>
@@ -24,22 +24,11 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    weekendList: Array
+  },
   data () {
     return {
-      recommendList: [
-        {
-          id: '1',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1504/47/4730a0c01664b63d.water.jpg_200x200_d7f52253.jpg',
-          title: '景点门票景点门票',
-          desc: '武汉极地海洋世界+海洋萌宠乐园（水母馆）成人票（需换实体票）'
-        },
-        {
-          id: '2',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1504/47/4730a0c01664b63d.water.jpg_200x200_d7f52253.jpg',
-          title: '武汉花博汇',
-          desc: '武汉极地海洋世界+海洋萌宠乐园（水母馆）成人票（需换实体票）'
-        }
-      ]
     }
   }
 }
