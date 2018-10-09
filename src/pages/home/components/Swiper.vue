@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   name: 'HomeSwiper',
   data () {
@@ -35,14 +34,10 @@ export default {
       ]
     }
   },
-  components: {
-    swiper,
-    swiperSlide
-  },
   computed: {
-    swiper () {
-      return this.$refs.mySwiper.swiper
-    }
+    // swiper () {
+    //   return this.$refs.mySwiper.swiper
+    // }
   },
   mounted () {
   }
