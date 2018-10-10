@@ -44,12 +44,12 @@ export default {
     getHomeInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
-        const data = res.data
-        this.city = data.city
-        this.swiperList = data.swiperList
-        this.iconList = data.iconList
-        this.recommendList = data.recommendList
-        this.weekendList = data.weekendList
+        const { city, swiperList, iconList, recommendList, weekendList } = res.data
+        this.city = city
+        this.swiperList = swiperList
+        this.iconList = iconList
+        this.recommendList = recommendList
+        this.weekendList = weekendList
       }
     }
   }

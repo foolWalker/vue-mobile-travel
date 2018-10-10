@@ -36,6 +36,7 @@ export default {
     &-right
       width: 1.24rem
       float: right
+      color: #fff
       .icon-jiantouxia
         font-size: .24rem
         margin-left: .04rem
