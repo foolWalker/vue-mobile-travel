@@ -50,7 +50,7 @@ export default {
     height: 0
     padding-bottom: 53%
     .swiper-pagination
-      bottom: 0
+      bottom: 5px
   .icon
     width: 25%
     padding-bottom: 25%
