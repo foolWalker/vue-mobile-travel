@@ -4,6 +4,11 @@
       class="item"
       v-for="item of letters"
       :key="item"
+      :ref="item"
+      @touchstart.prevent="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+      @click="handleLetterClick"
     >{{item}}</li>
   </ul>
 </template>
@@ -24,6 +29,31 @@ export default {
   },
   data () {
     return {
+      timer: null
+    }
+  },
+  methods: {
+    handleLetterClick (e) {
+      this.$emit('change', e.target.innerText)
+    },
+    handleTouchStart () {
+      this.touchStatus = true
+    },
+    handleTouchMove (e) {
+      if (this.touchStatus) {
+        if (this.timer) {
+          clearTimeout(this.timer)
+        }
+        this.timer = setTimeout(() => {
+          const startY = this.$refs['A'][0].offsetTop
+          const touchY = e.targetTouches[0].clientY - 79
+          const index = Math.floor((touchY - startY) / 20)
+          this.$emit('change', this.letters[index])
+        }, 15)
+      }
+    },
+    handleTouchEnd () {
+      this.touchStatus = false
     }
   }
 }
