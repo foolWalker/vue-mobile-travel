@@ -18,6 +18,12 @@ export default {
   props: {
     cities: Object
   },
+  data () {
+    return {
+      timer: null,
+      startY: 0
+    }
+  },
   computed: {
     letters () {
       const letters = []
@@ -27,10 +33,8 @@ export default {
       return letters
     }
   },
-  data () {
-    return {
-      timer: null
-    }
+  updated () {
+    this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
     handleLetterClick (e) {
@@ -45,9 +49,8 @@ export default {
           clearTimeout(this.timer)
         }
         this.timer = setTimeout(() => {
-          const startY = this.$refs['A'][0].offsetTop
           const touchY = e.targetTouches[0].clientY - 79
-          const index = Math.floor((touchY - startY) / 20)
+          const index = Math.floor((touchY - this.startY) / 20)
           this.$emit('change', this.letters[index])
         }, 15)
       }
