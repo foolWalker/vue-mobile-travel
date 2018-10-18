@@ -8,6 +8,7 @@
 </template>
 <script>
 import axios from 'axios'
+import VConsole from 'vconsole'
 import CityHeader from './components/Header'
 import CitySearch from './components/Search'
 import CityList from './components/List'
@@ -28,6 +29,8 @@ export default {
     }
   },
   mounted () {
+    const vConsole = new VConsole()
+    console.log(vConsole)
     this.getCityInfo()
   },
   methods: {

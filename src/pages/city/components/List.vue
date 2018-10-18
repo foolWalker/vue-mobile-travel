@@ -66,10 +66,13 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+    this.scroll = new Bscroll(this.$refs.wrapper, {
+      click: true
+    })
   },
   methods: {
     handleCityClick (city) {
+      console.log('change city')
       // this.$store.dispatch('changeCity', city)
       // this.$store.commit('changeCity', city)
       this.changeCity(city)
